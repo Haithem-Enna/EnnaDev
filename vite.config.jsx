@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         // Questa riga è fondamentale: dice a Vite che "@" significa "cartella principale"
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(process.cwd(), '.'),
       },
       // AGGIUNGI QUESTA PARTE:
       extensions: ['.js', '.jsx', '.json'] 
