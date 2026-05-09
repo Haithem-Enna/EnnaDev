@@ -4,7 +4,7 @@ import { PortfolioPage } from "./pages/PortfolioPage";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/EnnaDev">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
