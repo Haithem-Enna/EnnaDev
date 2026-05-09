@@ -46,7 +46,7 @@ export function FullStack() {
               transition={{ duration: 0.8 }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-[1px] bg-blue-500" />
+                <div className="w-10 h-px bg-blue-500" />
                 <span className="font-mono text-[10px] md:text-xs tracking-widest text-blue-400 uppercase">Core Expertise</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight tracking-tighter leading-none mb-8">
@@ -79,7 +79,7 @@ export function FullStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.03)" }}
-                className="p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 bg-white/[0.01] transition-all"
+                className="p-8 md:p-10 rounded-3xl md:rounded-4xl border border-white/5 bg-white/1 transition-all"
               >
                 <div className="mb-6 md:mb-8 p-3 md:p-4 w-fit rounded-2xl bg-white/5">
                   {feature.icon}
@@ -95,7 +95,7 @@ export function FullStack() {
             <motion.div 
                initial={{ opacity: 0, scale: 0.95 }}
                whileInView={{ opacity: 1, scale: 1 }}
-               className="md:col-span-2 p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-blue-600/10 to-indigo-600/10 border border-blue-500/10 flex flex-col md:flex-row justify-between items-center gap-8"
+               className="md:col-span-2 p-8 md:p-12 rounded-4xl md:rounded-[2.5rem] bg-linear-to-br from-blue-600/10 to-indigo-600/10 border border-blue-500/10 flex flex-col md:flex-row justify-between items-center gap-8"
             >
               <div className="text-center md:text-left">
                 <h4 className="text-2xl md:text-3xl font-light mb-2 italic">Hai un progetto complesso?</h4>
@@ -117,7 +117,7 @@ export function FullStack() {
       {/* Dynamic Background Element */}
       <motion.div 
         style={{ y }}
-        className="absolute -right-40 top-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] -z-10"
+        className="absolute -right-40 top-1/4 w-150 h-150 bg-blue-500/5 rounded-full blur-[120px] -z-10"
       />
     </section>
   );

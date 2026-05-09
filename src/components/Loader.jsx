@@ -14,14 +14,14 @@ export function Loader() {
       {!complete && (
         <motion.div
           exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
-          className="fixed inset-0 z-[1000] bg-black flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-1000 bg-black flex items-center justify-center overflow-hidden"
         >
           <div className="relative flex flex-col items-center">
             <motion.div 
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.5, ease: "circIn" }}
-              className="w-48 h-[1px] bg-white/20 mb-8"
+              className="w-48 h-px bg-white/20 mb-8"
             />
             
             <motion.h2 

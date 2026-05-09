@@ -38,7 +38,7 @@ export function Contact() {
             
             <a 
               href="mailto:ennadraouihaithem07@gmail.com" 
-              className="group flex items-center gap-6 text-2xl font-light hover:text-white/80 transition-all underline decoration-white/20 underline-offset-[12px]"
+              className="group flex items-center gap-6 text-2xl font-light hover:text-white/80 transition-all underline decoration-white/20 underline-offset-12"
             >
               Manda una mail
               <ArrowUpRight className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={32} />

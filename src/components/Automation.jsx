@@ -3,7 +3,7 @@ import { Bot, MessageSquare, Search, Zap, Terminal, Activity } from "lucide-reac
 
 export function Automation() {
   return (
-    <section id="automation" className="py-40 px-6 bg-gradient-to-b from-transparent to-indigo-900/10">
+    <section id="automation" className="py-40 px-6 bg-linear-to-b from-transparent to-indigo-900/10">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center text-center mb-32">
           <motion.div 

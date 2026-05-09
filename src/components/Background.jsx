@@ -69,16 +69,16 @@ export function Background() {
       {/* Floating Orbital Elements */}
       <motion.div 
         style={{ x: orbitalX1, y: orbitalY1 }}
-        className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px]" 
+        className="absolute top-1/4 left-1/3 w-100 h-100 bg-blue-600/5 rounded-full blur-[100px]" 
       />
       <motion.div 
         style={{ x: orbitalX2, y: orbitalY2 }}
-        className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px]" 
+        className="absolute bottom-1/4 right-1/3 w-125 h-125 bg-indigo-600/5 rounded-full blur-[120px]" 
       />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.05] [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_100%)]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 opacity-[0.05] mask-[radial-gradient(ellipse_at_center,black_70%,transparent_100%)]">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[40px_40px]" />
       </div>
 
       {/* Grain Overlay */}

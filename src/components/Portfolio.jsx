@@ -15,7 +15,7 @@ export function Portfolio({ isHomePage = false }) {
   const projects = isHomePage ? homeProjects : ALL_PROJECTS;
 
   return (
-    <section id="portfolio" className={`py-32 px-6 ${isHomePage ? 'bg-white/[0.02]' : 'bg-black min-h-screen'}`}>
+    <section id="portfolio" className={`py-32 px-6 ${isHomePage ? 'bg-white/2' : 'bg-black min-h-screen'}`}>
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -65,13 +65,13 @@ export function Portfolio({ isHomePage = false }) {
                 whileHover={{ y: -10 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6 bg-white/5">
+                <div className="relative aspect-16/10 overflow-hidden rounded-2xl mb-6 bg-white/5">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
                      <div className="flex gap-4">
                         <div className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white hover:text-black transition-colors">
                           <Github size={18} />

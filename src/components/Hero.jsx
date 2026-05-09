@@ -77,7 +77,7 @@ export function Hero() {
           className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
           alt="Technical Background"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -125,11 +125,11 @@ export function Hero() {
           className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start relative z-20"
         >
           <div className="md:col-span-7">
-            <p className="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-6">
+            <p className="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-none mb-6">
               FULL-STACK <br className="hidden md:block" />
               <span className="text-blue-500">MAVERICK</span>.
             </p>
-            <div className="h-px w-24 md:w-32 bg-gradient-to-r from-blue-500 to-transparent mb-8" />
+            <div className="h-px w-24 md:w-32 bg-linear-to-r from-blue-500 to-transparent mb-8" />
           </div>
           
           <div className="md:col-span-5 flex flex-col gap-6 md:gap-8 items-start md:items-end md:text-right">
@@ -157,12 +157,12 @@ export function Hero() {
       <motion.div 
          animate={{ rotate: 360 }}
          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-white/[0.03] rounded-full hidden lg:block"
+         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-white/3 rounded-full hidden lg:block"
       />
       <motion.div 
          animate={{ rotate: -360 }}
          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] border border-white/[0.02] rounded-full hidden lg:block"
+         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] border border-white/2 rounded-full hidden lg:block"
       />
 
       <motion.div 
@@ -172,7 +172,7 @@ export function Hero() {
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-6"
       >
         <span className="font-mono text-[9px] tracking-widest text-white/20 uppercase">Scroll to explore</span>
-        <div className="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="w-24 h-px bg-linear-to-r from-transparent via-white/20 to-transparent" />
       </motion.div>
     </section>
   );
