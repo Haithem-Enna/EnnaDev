@@ -1,5 +1,9 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import { motion } from "motion/react";
-import { Code2, Monitor, Database, Gamepad2, Layers } from "lucide-react";
+import { Code2, Monitor, Database, Gamepad2 } from "lucide-react";
 
 const skillCategories = [
   {

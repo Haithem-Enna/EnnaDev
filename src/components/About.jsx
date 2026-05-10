@@ -1,3 +1,7 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import { motion } from "motion/react";
 
 export function About() {
@@ -10,13 +14,13 @@ export function About() {
           viewport={{ once: true }}
           className="w-full md:w-1/2 relative"
         >
-          <div className="aspect-4/5 glass rounded-3xl overflow-hidden relative z-10 p-1">
+          <div className="aspect-[4/5] glass rounded-3xl overflow-hidden relative z-10 p-1">
             <img 
               src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800"
               className="w-full h-full object-cover rounded-[22px] opacity-70 grayscale hover:grayscale-0 transition-all duration-1000"
               alt="Haithem Digital Universe"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-bottom p-8">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-bottom p-8">
                <span className="mt-auto font-mono text-[10px] text-white/40 uppercase tracking-[.8em]">ENNA PROTOCOL</span>
             </div>
           </div>

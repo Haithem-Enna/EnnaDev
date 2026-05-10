@@ -1,12 +1,13 @@
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from "motion/react";
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDownRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export function Hero() {
-  // RIMOSSO <HTMLElement>
   const containerRef = useRef(null);
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,38 +16,6 @@ export function Hero() {
 
   const titleY = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const springX = useSpring(mouseX, { damping: 25, stiffness: 100 });
-  const springY = useSpring(mouseY, { damping: 25, stiffness: 100 });
-
-  const rotateX = useTransform(springY, [0, 1], [-10, 10]);
-  const rotateY = useTransform(springX, [0, 1], [10, -10]);
-  
-  const artifactX = useTransform(springX, v => (v - 0.5) * 50);
-  const artifactY = useTransform(springY, v => (v - 0.5) * 50);
-
-  useEffect(() => {
-    // RIMOSSO : MouseEvent
-    const handleMove = (e) => {
-      mouseX.set(e.clientX / window.innerWidth);
-      mouseY.set(e.clientY / window.innerHeight);
-    };
-    
-    // RIMOSSO : TouchEvent
-    const handleTouch = (e) => {
-      if (e.touches.length > 0) {
-        mouseX.set(e.touches[0].clientX / window.innerWidth);
-        mouseY.set(e.touches[0].clientY / window.innerHeight);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleTouch);
-    return () => {
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("touchmove", handleTouch);
-    };
-  }, [mouseX, mouseY]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,14 +39,14 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-6 overflow-hidden bg-black">
-      {/* Background Image */}
+      {/* Background Image - Absolute and Full Cover */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
           src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
           className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
           alt="Technical Background"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -94,10 +63,8 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <motion.div 
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="perspective-[1000px] mb-8 md:mb-12 relative flex justify-center"
-        >
+        <div className="mb-8 md:mb-12 relative flex justify-center">
+          {/* Background Glow behind text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[60%] bg-blue-500/10 blur-[100px] md:blur-[150px] rounded-full animate-pulse" />
           
           <motion.div
@@ -107,29 +74,19 @@ export function Hero() {
             <h1 className="text-[15vw] md:text-[12vw] font-display font-extrabold tracking-tighter leading-none select-none text-reveal">
               ENNA
             </h1>
-            
-            <motion.div 
-              style={{ x: artifactX, y: artifactY }}
-              className="absolute -top-10 -right-20 w-64 h-64 glass rounded-3xl overflow-hidden hidden xl:block -z-10"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1635830623398-3f8d6727289c?auto=format&fit=crop&q=80&w=800" 
-                className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
-              />
-            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
 
         <motion.div 
           variants={itemVariants}
           className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start relative z-20"
         >
           <div className="md:col-span-7">
-            <p className="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-none mb-6">
+            <p className="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-6">
               FULL-STACK <br className="hidden md:block" />
               <span className="text-blue-500">MAVERICK</span>.
             </p>
-            <div className="h-px w-24 md:w-32 bg-linear-to-r from-blue-500 to-transparent mb-8" />
+            <div className="h-px w-24 md:w-32 bg-gradient-to-r from-blue-500 to-transparent mb-8" />
           </div>
           
           <div className="md:col-span-5 flex flex-col gap-6 md:gap-8 items-start md:items-end md:text-right">
@@ -157,12 +114,12 @@ export function Hero() {
       <motion.div 
          animate={{ rotate: 360 }}
          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-white/3 rounded-full hidden lg:block"
+         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] border border-white/[0.03] rounded-full hidden lg:block"
       />
       <motion.div 
          animate={{ rotate: -360 }}
          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] border border-white/2 rounded-full hidden lg:block"
+         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] border border-white/[0.02] rounded-full hidden lg:block"
       />
 
       <motion.div 
@@ -172,7 +129,7 @@ export function Hero() {
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-6"
       >
         <span className="font-mono text-[9px] tracking-widest text-white/20 uppercase">Scroll to explore</span>
-        <div className="w-24 h-px bg-linear-to-r from-transparent via-white/20 to-transparent" />
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </motion.div>
     </section>
   );

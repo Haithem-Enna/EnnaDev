@@ -1,3 +1,7 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Instagram, 
@@ -52,12 +56,10 @@ export function Navbar() {
     { icon: <Mail size={20} />, label: "Gmail", href: "mailto:ennadraouihaithem07@gmail.com", color: "hover:text-red-500" },
   ];
 
-  // RIMOSSO : string
   const handleLinkClick = (href) => {
     setIsOpen(false);
     if (href.startsWith('/#') && location.pathname === '/') {
-      const id = href.substring(2);
-      const element = document.getElementById(id);
+      const element = document.getElementById(href.substring(2));
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
@@ -66,10 +68,11 @@ export function Navbar() {
 
   return (
     <>
+      {/* Top Bar - Solid & Distinctive */}
       <motion.nav 
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-0 left-0 right-0 z-100 p-4 md:p-6 flex justify-between items-center bg-black/80 backdrop-blur-3xl border-b border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+        className="fixed top-0 left-0 right-0 z-[100] p-4 md:p-6 flex justify-between items-center bg-black/80 backdrop-blur-3xl border-b border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
       >
         <Link to="/" className="flex items-center gap-2 md:gap-4 pointer-events-auto">
           <span className="font-display font-black text-lg md:text-2xl tracking-tighter text-white hover:text-blue-500 transition-colors cursor-pointer select-none uppercase">
@@ -87,13 +90,14 @@ export function Navbar() {
         </div>
       </motion.nav>
 
+      {/* Social & Contact Vertical Menu */}
       <AnimatePresence>
         {isSocialOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-300 flex items-center justify-center bg-black/70 backdrop-blur-3xl p-4 md:p-6"
+            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/70 backdrop-blur-3xl p-4 md:p-6"
             onClick={() => setIsSocialOpen(false)}
           >
             <motion.div
@@ -103,7 +107,7 @@ export function Navbar() {
               className="w-full max-w-sm glass rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-12 relative overflow-hidden flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-between items-start mb-8 md:mb-10 shrink-0">
+              <div className="flex justify-between items-start mb-8 md:mb-10 flex-shrink-0">
                 <div className="text-left">
                   <h3 className="font-display font-black text-2xl md:text-3xl tracking-tighter mb-1">NETWORK</h3>
                   <p className="text-[9px] md:text-[10px] font-mono text-white/30 uppercase tracking-widest">Established Connections</p>
@@ -126,7 +130,7 @@ export function Navbar() {
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className={`flex items-center gap-6 p-5 rounded-2xl bg-white/2 border border-white/5 transition-all group shrink-0 ${social.color}`}
+                    className={`flex items-center gap-6 p-5 rounded-2xl bg-white/[0.02] border border-white/5 transition-all group flex-shrink-0 ${social.color}`}
                   >
                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center transition-colors">
                       {social.icon}
@@ -137,14 +141,17 @@ export function Navbar() {
                   </motion.a>
                 ))}
               </div>
-              <div className="mt-4 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent shrink-0" />
+              
+              <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent flex-shrink-0" />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-8 right-8 md:bottom-12 md:right-12 z-200">
+      {/* Floating Hub Button (Bottom Right) */}
+      <div className="fixed bottom-8 right-8 md:bottom-12 md:right-12 z-[200]">
         <div className="relative">
+          {/* Fullscreen Overlay with Blur */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
@@ -154,12 +161,12 @@ export function Navbar() {
                 className="fixed inset-0 bg-black/80 backdrop-blur-2xl"
                 onClick={() => setIsOpen(false)}
               >
+                {/* Circular Center Menu */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative">
                     {navItems.map((item, i) => {
                       const angle = (i * (360 / navItems.length)) - 90;
-                      // Raggio ridotto per mobile/iPad
-                      const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 140 : 220;
+                      const radius = window.innerWidth < 768 ? 140 : 220;
                       
                       return (
                         <Link
@@ -189,6 +196,8 @@ export function Navbar() {
                         </Link>
                       );
                     })}
+                    
+                    {/* Center point decoration */}
                     <div className="w-4 h-4 rounded-full bg-blue-500 blur-sm animate-pulse" />
                   </div>
                 </div>
@@ -196,11 +205,12 @@ export function Navbar() {
             )}
           </AnimatePresence>
 
+          {/* Trigger Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full glass flex items-center justify-center group relative overflow-hidden shadow-2xl z-210"
+            className="w-16 h-16 md:w-20 md:h-20 rounded-full glass flex items-center justify-center group relative overflow-hidden shadow-2xl z-[210]"
           >
             <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             <motion.div

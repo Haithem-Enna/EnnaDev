@@ -1,3 +1,7 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import { Background } from "../components/Background";
 import { Navbar } from "../components/Navbar";
 import { Portfolio } from "../components/Portfolio";
